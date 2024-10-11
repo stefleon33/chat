@@ -42,6 +42,19 @@ const Screen1 = ({ navigation }) => {
           />
         ))}
       </View>
+
+      {/* Start chatting button */}
+      <TouchableOpacity 
+        style={styles.button}
+        onPress={() =>
+          navigation.navigate("Chat", {
+            name: name,
+            backgroundColor: backgroundColor,
+          })
+              }
+      >
+          <Text style={styles.buttonText}>Start Chatting</Text>
+      </TouchableOpacity>
     </View>
     </ImageBackground>
    </View>
@@ -110,5 +123,21 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
   },
+
+  button: {
+    backgroundColor: '#757083',
+    width: '88%',
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 25,
+    padding: 15,
+  },
+
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 600,
+    color: '#FFFFFF',
+  }
+});
 
 export default Screen1;
