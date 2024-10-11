@@ -16,6 +16,13 @@ const Screen1 = ({ navigation }) => {
 
   {/* Box containing name input, background color selection and start chatting button */}
     <View style={styles.content}>
+       {/* Name input */}
+      <TextInput
+        style={styles.nameInput}
+        value={name}
+        onChangeText={setName}
+        placeholder='Your Name'
+      />
     </View>
     </ImageBackground>
    </View>
@@ -54,5 +61,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     marginBottom: '20%',
+  },
+
+  nameInput: {
+    width: "88%",
+    borderWidth: 1,
+    fontSize: 16,
+    fontWeight: 300,
+    color: '#757083',
+    margin: 25,
+    opacity: 0.5,
+    padding: 15,
   },
 export default Screen1;
