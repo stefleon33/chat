@@ -14,6 +14,9 @@ const Screen1 = ({ navigation }) => {
   {/* App name */}
     <Text style={styles.title}>Chatter</Text>
 
+  {/* Box containing name input, background color selection and start chatting button */}
+    <View style={styles.content}>
+    </View>
     </ImageBackground>
    </View>
  );
@@ -43,4 +46,13 @@ const styles = StyleSheet.create({
     margin: 25,
   },
 
+  content: {
+    backgroundColor: 'white',
+    borderRadius: 4,
+    width: '88%',
+    height: '50%',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginBottom: '20%',
+  },
 export default Screen1;
