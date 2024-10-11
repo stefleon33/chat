@@ -5,6 +5,9 @@ const Screen1 = ({ navigation }) => {
   const [name, setName] = useState('');
 
   const [backgroundColor, setBackgroundColor] = useState("#090C08");
+
+  const colors = ["#090C08", "#474056", "#8A95A5", "#B9C6AE"];
+
  return (
    <View style={styles.container}>
     <ImageBackground 
