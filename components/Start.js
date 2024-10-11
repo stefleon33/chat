@@ -11,6 +11,9 @@ const Screen1 = ({ navigation }) => {
       source={require("../assets/backgroundImage.png")} 
       style={styles.background}
     >
+  {/* App name */}
+    <Text style={styles.title}>Chatter</Text>
+
     </ImageBackground>
    </View>
  );
@@ -31,4 +34,13 @@ const styles = StyleSheet.create({
   alignItems: 'center',
   justifyContent: 'center', 
  },
+
+ title: {
+    flex: 1,
+    fontSize: 45,
+    fontWeight: 600,
+    color: '#FFFFFF',
+    margin: 25,
+  },
+
 export default Screen1;
