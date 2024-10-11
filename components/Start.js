@@ -23,6 +23,22 @@ const Screen1 = ({ navigation }) => {
         onChangeText={setName}
         placeholder='Your Name'
       />
+
+      {/* Background color selection */}
+      <Text style={styles.chooseBgColor}>Choose Background Color:</Text>
+      <View style={styles.colorContainer}>
+        {colors.map((color) => (
+          <TouchableOpacity
+            key={color}
+            style={[
+              styles.colorOption,
+              { backgroundColor: color },
+              backgroundColor === color && styles.selectedColor,
+            ]}
+            onPress={() => setBackgroundColor(color)}
+          />
+        ))}
+      </View>
     </View>
     </ImageBackground>
    </View>
@@ -73,4 +89,23 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     padding: 15,
   },
+
+  chooseBgColor: {
+    fontSize: 16,
+    fontWeight: 300,
+    color: '#757083',
+  },
+  
+  colorContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%",
+  },
+
+  colorOption: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+
 export default Screen1;
