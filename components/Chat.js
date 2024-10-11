@@ -12,6 +12,7 @@ const ChatScreen = ({ route, navigation }) => {
    <View 
     style={[
       styles.container,
+      { backgroundColor: backgroundColor}
     ]}>
      <Text>Hello Screen2!</Text>
    </View>
