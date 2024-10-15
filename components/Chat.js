@@ -1,5 +1,6 @@
-import { StyleSheet, View, Text } from 'react-native';
 import { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Platform, KeyboardAvoidingView } from 'react-native';
+import { Bubble, GiftedChat } from "react-native-gifted-chat";
 
 const ChatScreen = ({ route, navigation }) => {
   const { name, backgroundColor } = route.params;
