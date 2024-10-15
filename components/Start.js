@@ -46,8 +46,8 @@ const Start = ({ navigation }) => {
       {/* Start chatting button */}
       <TouchableOpacity 
         accessible={true}
-        accessibilityLabel="More options"
-        accessibilityHint="Lets you choose to send an image or your geolocation."
+        accessibilityLabel="Background color options"
+        accessibilityHint="Lets you choose your background color."
         accessibilityRole="button"
         style={styles.button}
         onPress={() =>
@@ -57,7 +57,11 @@ const Start = ({ navigation }) => {
           })
               }
       >
-          <Text style={styles.buttonText}>Start Chatting</Text>
+          <Text
+          accessible={true}
+          accessibilityLabel="Start Chatting Button"
+          accessibilityHint="Lets you enter the chat room." 
+          style={styles.buttonText}>Start Chatting</Text>
       </TouchableOpacity>
     </View>
   {/* Keyboard adjustments */}
