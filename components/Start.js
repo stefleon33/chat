@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
 
-const Screen1 = ({ navigation }) => {
+const Start = ({ navigation }) => {
   const [name, setName] = useState('');
 
   const [backgroundColor, setBackgroundColor] = useState("#090C08");
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Screen1;
+export default Start;
