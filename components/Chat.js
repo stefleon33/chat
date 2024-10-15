@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { useState, useEffect } from 'react';
 
 const ChatScreen = ({ route, navigation }) => {
   const { name, backgroundColor } = route.params;
