@@ -8,6 +8,8 @@ const Chat = ({ route, navigation }) => {
 
     useEffect(() => {
     navigation.setOptions({ title: name });
+
+    /* Initial message and system message */
     setMessages([
       {
         _id: 1,
@@ -28,10 +30,12 @@ const Chat = ({ route, navigation }) => {
     ]);
   }, []);
 
+  /* ensures that the messages remain on the screen, even if the user exits the chat */
   const onSend = (newMessages) => {
    setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
  }
 
+ /* Customizes the message bubbles*/
   const renderBubble = (props) => {
    return <Bubble
      {...props}
@@ -46,7 +50,7 @@ const Chat = ({ route, navigation }) => {
    />
  }
 
-
+/* Renders background color, messages and keyboard adjustments */
  return (
    <View 
     style={[
@@ -68,7 +72,7 @@ const Chat = ({ route, navigation }) => {
  );
 }
 
-
+/* Styles for Chat screen */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

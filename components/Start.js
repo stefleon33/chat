@@ -60,6 +60,7 @@ const Start = ({ navigation }) => {
           <Text style={styles.buttonText}>Start Chatting</Text>
       </TouchableOpacity>
     </View>
+  {/* Keyboard adjustments */}
     { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null }
     { Platform.OS === "ios"?<KeyboardAvoidingView behavior="padding" />: null}
     </ImageBackground>
@@ -67,6 +68,7 @@ const Start = ({ navigation }) => {
  );
 }
 
+/* Styles for Start screen */
 const styles = StyleSheet.create({
  container: {
    flex: 1,
