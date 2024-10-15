@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
  title: {
     flex: 1,
     fontSize: 45,
-    fontWeight: 600,
+    fontWeight: '600',
     color: '#FFFFFF',
     margin: 25,
   },
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     width: "88%",
     borderWidth: 1,
     fontSize: 16,
-    fontWeight: 300,
+    fontWeight: '300',
     color: '#757083',
     margin: 25,
     opacity: 0.5,
@@ -108,10 +108,10 @@ const styles = StyleSheet.create({
 
   chooseBgColor: {
     fontSize: 16,
-    fontWeight: 300,
+    fontWeight: '300',
     color: '#757083',
   },
-  
+
   colorContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
 
   buttonText: {
     fontSize: 16,
-    fontWeight: 600,
+    fontWeight: '600',
     color: '#FFFFFF',
   }
 });
