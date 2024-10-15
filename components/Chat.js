@@ -28,6 +28,25 @@ const Chat = ({ route, navigation }) => {
     ]);
   }, []);
 
+  const onSend = (newMessages) => {
+   setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
+ }
+
+  const renderBubble = (props) => {
+   return <Bubble
+     {...props}
+     wrapperStyle={{
+       right: {
+         backgroundColor: "#000"
+       },
+       left: {
+         backgroundColor: "#FFF"
+       }
+     }}
+   />
+ }
+
+
  return (
    <View 
     style={[
