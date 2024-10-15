@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Platform, KeyboardAvoidingView } from 'react-native';
 import { Bubble, GiftedChat } from "react-native-gifted-chat";
 
-const ChatScreen = ({ route, navigation }) => {
+const Chat = ({ route, navigation }) => {
   const { name, backgroundColor } = route.params;
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ChatScreen;
+export default Chat;
