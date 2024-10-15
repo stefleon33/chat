@@ -53,10 +53,20 @@ const Chat = ({ route, navigation }) => {
       styles.container,
       { backgroundColor: backgroundColor}
     ]}>
-     <Text>Hello Screen2!</Text>
+    <GiftedChat
+      messages={messages}
+      renderBubble={renderBubble}
+      onSend={messages => onSend(messages)}
+      user={{
+        _id: 1
+      }}
+    />
+    { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null }
    </View>
+   
  );
 }
+
 
 const styles = StyleSheet.create({
   container: {
