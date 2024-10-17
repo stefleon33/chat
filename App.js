@@ -6,6 +6,10 @@ import Chat from './components/Chat';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// import firestore conenction
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
 // Create the navigator
 const Stack = createNativeStackNavigator();
 
