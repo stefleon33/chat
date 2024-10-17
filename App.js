@@ -14,6 +14,22 @@ import { getFirestore } from "firebase/firestore";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAps1G5dy9iCI8ViiTc3M_MntZVzu0eY0",
+    authDomain: "chat-9906f.firebaseapp.com",
+    projectId: "chat-9906f",
+    storageBucket: "chat-9906f.appspot.com",
+    messagingSenderId: "687734823098",
+    appId: "1:687734823098:web:870909fa04ae88e33cca83"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Cloud Firestore and get a reference to the service
+  const db = getFirestore(app);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
