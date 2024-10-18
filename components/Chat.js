@@ -37,8 +37,8 @@ useEffect(() => {
 
   /* ensures that the messages remain on the screen, even if the user exits the chat */
   const onSend = (newMessages) => {
-   setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
- }
+    addDoc(collection(db, "messages"), newMessages[0])
+  }
 
  /* Customizes the message bubbles*/
   const renderBubble = (props) => {
