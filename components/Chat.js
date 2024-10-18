@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Platform, KeyboardAvoidingView } from 'react-native';
 import { Bubble, GiftedChat } from "react-native-gifted-chat";
+import { 
+  collection, 
+  addDoc, 
+  onSnapshot, 
+  query, 
+  orderBy 
+} from "firebase/firestore";
 
 const Chat = ({ route, navigation, db }) => {
   const { userID, name, backgroundColor } = route.params;
