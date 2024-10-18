@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, ImageBackground, TouchableOpacity, Platform, KeyboardAvoidingView } from 'react-native';
+import { 
+  StyleSheet, 
+  View, Text, 
+  TextInput, 
+  ImageBackground, 
+  TouchableOpacity, 
+  Platform, Alert, 
+  KeyboardAvoidingView 
+} from 'react-native';
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState('');
