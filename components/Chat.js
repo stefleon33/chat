@@ -37,7 +37,8 @@ const Chat = ({ route, navigation }) => {
 
  /* Customizes the message bubbles*/
   const renderBubble = (props) => {
-   return <Bubble
+   return (
+   <Bubble
      {...props}
      wrapperStyle={{
        right: {
@@ -48,7 +49,8 @@ const Chat = ({ route, navigation }) => {
        }
      }}
    />
- }
+ );
+};
 
 /* Renders background color, messages and keyboard adjustments */
  return (
