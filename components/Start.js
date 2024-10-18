@@ -67,12 +67,12 @@ const Start = ({ navigation }) => {
             accessibilityHint="Lets you choose your background color."
             accessibilityRole="button"  
             key={color}
-            style={[
-              styles.colorOption,
-              { backgroundColor: color },
-              backgroundColor === color && styles.selectedColor,
-            ]}
-            onPress={() => setBackgroundColor(color)}
+              style={[
+                styles.colorOption,
+                { backgroundColor: color },
+                backgroundColor === color && styles.selectedColor,
+              ]}
+              onPress={() => setBackgroundColor(color)}
           />
         ))}
       </View>
