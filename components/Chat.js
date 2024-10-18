@@ -13,10 +13,27 @@ const Chat = ({ route, navigation, db }) => {
   const { userID, name, backgroundColor } = route.params;
   const [messages, setMessages] = useState([]);
 
-    useEffect(() => {
-    navigation.setOptions({ title: name });
+useEffect(() => {
+  //fetch messages from the database in real time
+  navigation.setOptions({ title: name });
+  const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+  const unsubMessages = onSnapshot(q, (docs) => {
+    let newMessages = [];
+    docs.forEach(doc => {
+      newMessages.push({
+        id: doc.id,
+        ...doc.data(),
+        createdAt: new Date(doc.data().createdAt.toMillis())
+     })
+   })
+   setMessages(newMessages);
+ })
 
-  }, []);
+ //Clean up code
+ return () => {
+   if (unsubMessages) unsubMessages();
+ }
+}, []);
 
   /* ensures that the messages remain on the screen, even if the user exits the chat */
   const onSend = (newMessages) => {
