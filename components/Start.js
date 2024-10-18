@@ -12,6 +12,9 @@ import {
 import { getAuth, signInAnonymously } from "firebase/auth";
 
 const Start = ({ navigation }) => {
+  //Initialize Firebase Authentication handler
+  const auth = getAuth();
+
   const [name, setName] = useState('');
 
   const [backgroundColor, setBackgroundColor] = useState("#090C08");
