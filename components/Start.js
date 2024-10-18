@@ -80,18 +80,18 @@ const Start = ({ navigation }) => {
       {/* Start chatting button */}
       <TouchableOpacity 
         style={styles.button}
-        onPress={() =>
-          navigation.navigate("Chat", {
-            name: name,
-            backgroundColor: backgroundColor,
-          })
-              }
+        accessible={true}
+        accessibilityLabel="Start Chatting Button"
+        accessibilityHint="Lets you enter the chat room." 
+        onPress={() => { 
+          if (name == '') {
+            Alert.alert('Please put your name!');
+          } else {
+            signInUser();
+          }
+        }}
       >
-          <Text
-          accessible={true}
-          accessibilityLabel="Start Chatting Button"
-          accessibilityHint="Lets you enter the chat room." 
-          style={styles.buttonText}>Start Chatting</Text>
+        <Text style={styles.buttonText}>Start Chatting</Text>
       </TouchableOpacity>
     </View>
   {/* Keyboard adjustments */}
