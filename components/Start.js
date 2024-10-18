@@ -45,6 +45,10 @@ const Start = ({ navigation }) => {
       <View style={styles.colorContainer}>
         {colors.map((color) => (
           <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Background color options"
+            accessibilityHint="Lets you choose your background color."
+            accessibilityRole="button"  
             key={color}
             style={[
               styles.colorOption,
@@ -58,10 +62,6 @@ const Start = ({ navigation }) => {
 
       {/* Start chatting button */}
       <TouchableOpacity 
-        accessible={true}
-        accessibilityLabel="Background color options"
-        accessibilityHint="Lets you choose your background color."
-        accessibilityRole="button"
         style={styles.button}
         onPress={() =>
           navigation.navigate("Chat", {
