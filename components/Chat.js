@@ -9,25 +9,6 @@ const Chat = ({ route, navigation, db }) => {
     useEffect(() => {
     navigation.setOptions({ title: name });
 
-    /* Initial message and system message */
-    setMessages([
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
-      {
-        _id: 2,
-        text: 'Start chatting!',
-        createdAt: new Date(),
-        system: true,
-      },
-    ]);
   }, []);
 
   /* ensures that the messages remain on the screen, even if the user exits the chat */
