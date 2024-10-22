@@ -13,6 +13,7 @@ import { getFirestore, disableNetwork, enableNetwork } from "firebase/firestore"
 import { LogBox, Alert } from 'react-native';
 LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
+import { useNetInfo } from "@react-native-community/netinfo";
 // Create the navigator
 const Stack = createNativeStackNavigator();
 
