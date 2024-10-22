@@ -10,7 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { initializeApp } from "firebase/app";
 import { getFirestore, disableNetwork, enableNetwork } from "firebase/firestore";
 
-import { LogBox } from 'react-native';
+import { LogBox, Alert } from 'react-native';
 LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 // Create the navigator
