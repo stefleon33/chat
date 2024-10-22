@@ -10,7 +10,8 @@ import {
 } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Chat = ({ route, navigation, db }) => {
+
+const Chat = ({ route, navigation, db, isConnected }) => {
   const { userID, name, backgroundColor } = route.params;
   const [messages, setMessages] = useState([]);
 
