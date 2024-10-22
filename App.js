@@ -14,6 +14,8 @@ import { LogBox, Alert } from 'react-native';
 LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 import { useNetInfo } from "@react-native-community/netinfo";
+import { useEffect } from "react";
+
 // Create the navigator
 const Stack = createNativeStackNavigator();
 
