@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Platform, KeyboardAvoidingView } from 'react-native';
-import { Bubble, GiftedChat } from "react-native-gifted-chat";
+import { Bubble, GiftedChat, InputToolbar } from "react-native-gifted-chat";
 import { 
   collection, 
   addDoc, 
@@ -85,6 +85,11 @@ useEffect(() => {
  );
 };
 
+const renderInputToolbar = (props) => {
+ if (isConnected) return <InputToolbar {...props} />;
+ else return null;
+}
+
 /* Renders background color, messages and keyboard adjustments */
  return (
    <View 
@@ -95,6 +100,7 @@ useEffect(() => {
     <GiftedChat
       messages={messages}
       renderBubble={renderBubble}
+      renderInputToolbar={renderInputToolbar}
       onSend={messages => onSend(messages)}
       user={{
         _id: userID,
