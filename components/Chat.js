@@ -28,39 +28,38 @@ const Chat = ({ route, navigation, db, isConnected }) => {
       // useEffect code is re-executed.
       if (unsubMessages) unsubMessages();
       unsubMessages = null;
-  const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
-    unsubMessages = onSnapshot(q, (documentsSnapshot) => {
-      let newMessages = [];
-      documentsSnapshot.forEach(doc => {
-        newMessages.push({
-          id: doc.id,
-          ...doc.data(),
-          createdAt: new Date(doc.data().createdAt.toMillis())
-      })
+ 
+    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+      unsubMessages = onSnapshot(q, (documentsSnapshot) => {
+        let newMessages = [];
+        documentsSnapshot.forEach(doc => {
+          newMessages.push({
+            id: doc.id,
+            ...doc.data(),
+            createdAt: new Date(doc.data().createdAt.toMillis())
+        })
+      });
+      cacheMessages(newMessages);
+      setMessages(newMessages);
     });
-    cacheMessages(newMessages);
-    setMessages(newMessages);
-  });
-  } else loadCachedMessages();
+    } else loadCachedMessages();
 
- //Clean up code
- return () => {
-   if (unsubMessages) unsubMessages();
- }
-}, [isConnected]);
+  //Clean up code
+  return () => {
+    if (unsubMessages) unsubMessages();
+  }
+  }, [isConnected]);
 
-  
+  const loadCachedMessages = async () => {
+    const cachedMessages = await AsyncStorage.getItem("messages") || [];
+    setMessages(JSON.parse(cachedMessages));
+  }
   const cacheMessages = async (messagesToCache) => {
     try { 
       await AsyncStorage.setItem("messages", JSON.stringify(messagesToCache));
     } catch (error) {
       console.log(error.message);
     }
-  }
-
-  const loadCachedMessages = async () => {
-    const cachedMessages = await AsyncStorage.getItem("messages") || [];
-    setMessages(JSON.parse(cachedMessages));
   }
 
   /* ensures that the messages remain on the screen, even if the user exits the chat */
