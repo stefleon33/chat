@@ -5,6 +5,10 @@ import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 
 import * as Location from 'expo-location';
+
+const CustomActions = ({ wrapperStyle, iconTextStyle, onSend }) => {
+    const actionSheet = useActionSheet();
+
     const onActionPress = () => {
         const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];
         const cancelButtonIndex = options.length - 1;
@@ -63,3 +67,15 @@ import * as Location from 'expo-location';
       } else Alert.alert("Error occurred while fetching location");
     } else Alert.alert("Permissions haven't been granted.");
   }
+
+  return (
+    <TouchableOpacity 
+        style={styles.container} 
+        onPress={onActionPress}>
+            <View style={[styles.wrapper, wrapperStyle]}>
+                <Text style={[styles.iconText, iconTextStyle]}>+</Text>
+            </View>
+    </TouchableOpacity>
+  );
+}
+
