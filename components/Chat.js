@@ -11,6 +11,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import CustomActions from './CustomActions';
+import MapView from 'react-native-maps';
 
 const Chat = ({ route, navigation, db, isConnected }) => {
   const { userID, name, backgroundColor } = route.params;
