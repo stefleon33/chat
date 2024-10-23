@@ -25,9 +25,9 @@ const Chat = ({ route, navigation, db, isConnected }) => {
       unsubMessages = null;
  
     const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
-      unsubMessages = onSnapshot(q, (documentsSnapshot) => {
+      unsubMessages = onSnapshot(q, (docs) => {
         let newMessages = [];
-        documentsSnapshot.forEach(doc => {
+        docs.forEach(doc => {
           newMessages.push({
             id: doc.id,
             ...doc.data(),
