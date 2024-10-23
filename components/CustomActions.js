@@ -69,6 +69,8 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
     } else Alert.alert("Permissions haven't been granted.");
   }
 
+  const newUploadRef = ref(storage, 'image123');
+
   return (
     <TouchableOpacity 
         style={styles.container} 
