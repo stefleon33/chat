@@ -16,11 +16,11 @@ const Chat = ({ route, navigation, db, isConnected }) => {
   const { userID, name, backgroundColor } = route.params;
   const [messages, setMessages] = useState([]);
 
-let unsubMessages;
+  let unsubMessages;
 
 useEffect(() => {
 
-  if (isConnected === true) {
+    if (isConnected === true) {
 
       // unregister current onSnapshot() listener to avoid registering multiple listeners when
       // useEffect code is re-executed.
@@ -108,6 +108,7 @@ const renderInputToolbar = (props) => {
         name: name,
       }}
     />
+
     { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null }
     { Platform.OS === "ios"?<KeyboardAvoidingView behavior="padding" />: null }
    </View>
