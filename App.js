@@ -24,16 +24,7 @@ const App = () => {
   //Defines a new state that represeents the netwrok connectivity status
   const connectionStatus = useNetInfo();
 
-  useEffect(() => {
-    if (connectionStatus.isConnected === false) {
-      Alert.alert("Connection Lost!");
-      disableNetwork(db);
-    } else if (connectionStatus.isConnected === true) {
-      enableNetwork(db);
-    }
-  }, [connectionStatus.isConnected]);
-
-  // Your web app's Firebase configuration
+  // Web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyBAps1G5dy9iCI8ViiTc3M_MntZVzu0eY0",
     authDomain: "chat-9906f.firebaseapp.com",
@@ -49,7 +40,17 @@ const App = () => {
   // Initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
 
-
+  // Initialize Firebase Storage handler
+  const storage = getStorage(app);
+ 
+  useEffect(() => {
+    if (connectionStatus.isConnected === false) {
+      Alert.alert("Connection Lost!!");
+      disableNetwork(db);
+    } else if (connectionStatus.isConnected === true) {
+      enableNetwork(db);
+    }
+  }, [connectionStatus.isConnected]);
 
   return (
     <NavigationContainer>
@@ -63,7 +64,11 @@ const App = () => {
         <Stack.Screen
           name="Chat"
           >
-         {props => <Chat isConnected={connectionStatus.isConnected} db={db} {...props} />}
+         {props => <Chat 
+            isConnected={connectionStatus.isConnected} 
+            db={db} 
+            storage={storage}
+            {...props} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
