@@ -85,7 +85,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
   }
 
   const renderCustomActions = (props) => {
-    return <CustomActions {...props} />;
+    return <CustomActions onSend={onSend} {...props} />;
   };
 
   /* Checks if the current message contains location data */
