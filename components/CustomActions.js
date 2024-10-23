@@ -39,3 +39,12 @@ import * as Location from 'expo-location';
       }
   }
 
+  const takePhoto = async () => {
+    let permissions = await ImagePicker.requestCameraPermissionsAsync();
+    if (permissions?.granted) {
+      let result = await ImagePicker.launchCameraAsync();
+      if (!result.canceled) {
+        console.log('uploading and uploading the image occurs here');
+      } else Alert.alert("Permissions haven't been granted.");
+    }
+  }
