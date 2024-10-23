@@ -84,10 +84,15 @@ const Chat = ({ route, navigation, db, isConnected }) => {
  );
 };
 
-const renderInputToolbar = (props) => {
- if (isConnected) return <InputToolbar {...props} />;
- else return null;
-}
+  const renderInputToolbar = (props) => {
+    if (isConnected) return <InputToolbar {...props} />;
+    else return null;
+  }
+
+  const renderCustomActions = (props) => {
+    return <CustomActions {...props} />;
+  };
+
 
 /* Renders background color, messages and keyboard adjustments */
  return (
@@ -101,6 +106,7 @@ const renderInputToolbar = (props) => {
       renderBubble={renderBubble}
       renderInputToolbar={renderInputToolbar}
       onSend={messages => onSend(messages)}
+      renderActions={renderCustomActions}
       user={{
         _id: userID,
         name: name,
