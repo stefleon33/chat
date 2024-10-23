@@ -15,14 +15,23 @@ import { LogBox, Alert } from 'react-native';
 import { useNetInfo } from "@react-native-community/netinfo";
 import { useEffect } from "react";
 
-// Create the navigator
-const Stack = createNativeStackNavigator();
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
+
+// Create the navigator
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   //Defines a new state that represeents the netwrok connectivity status
   const connectionStatus = useNetInfo();
+    useEffect(() => {
+    if (connectionStatus.isConnected === false) {
+      Alert.alert("Connection Lost!!");
+      disableNetwork(db);
+    } else if (connectionStatus.isConnected === true) {
+      enableNetwork(db);
+    }
+  }, [connectionStatus.isConnected]);
 
   // Web app's Firebase configuration
   const firebaseConfig = {
@@ -43,14 +52,7 @@ const App = () => {
   // Initialize Firebase Storage handler
   const storage = getStorage(app);
  
-  useEffect(() => {
-    if (connectionStatus.isConnected === false) {
-      Alert.alert("Connection Lost!!");
-      disableNetwork(db);
-    } else if (connectionStatus.isConnected === true) {
-      enableNetwork(db);
-    }
-  }, [connectionStatus.isConnected]);
+
 
   return (
     <NavigationContainer>
