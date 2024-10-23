@@ -18,7 +18,9 @@ const Chat = ({ route, navigation, db, isConnected }) => {
 
   let unsubMessages;
 
-useEffect(() => {
+  useEffect(() => {
+    //fetch messages from the database in real time
+    navigation.setOptions({ title: name });
 
     if (isConnected === true) {
 
@@ -26,9 +28,6 @@ useEffect(() => {
       // useEffect code is re-executed.
       if (unsubMessages) unsubMessages();
       unsubMessages = null;
-
-  //fetch messages from the database in real time
-  navigation.setOptions({ title: name });
   const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
     unsubMessages = onSnapshot(q, (documentsSnapshot) => {
       let newMessages = [];
