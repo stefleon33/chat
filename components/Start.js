@@ -14,15 +14,11 @@ import { getAuth, signInAnonymously } from "firebase/auth";
 const Start = ({ navigation }) => {
   //Initialize Firebase Authentication handler
   const auth = getAuth();
-
   const [name, setName] = useState('');
-
   const [backgroundColor, setBackgroundColor] = useState("#090C08");
-
   const colors = ["#090C08", "#474056", "#8A95A5", "#B9C6AE"];
 
-
-  const signInUser = () => {
+  const logInUser = () => {
     signInAnonymously(auth)
       .then(result => {
         navigation.navigate("Chat", {
@@ -87,7 +83,7 @@ const Start = ({ navigation }) => {
           if (name == '') {
             Alert.alert('Please put your name!');
           } else {
-            signInUser();
+            logInUser();
           }
         }}
       >

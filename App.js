@@ -11,13 +11,14 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, disableNetwork, enableNetwork } from "firebase/firestore";
 
 import { LogBox, Alert } from 'react-native';
-LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 import { useNetInfo } from "@react-native-community/netinfo";
 import { useEffect } from "react";
 
 // Create the navigator
 const Stack = createNativeStackNavigator();
+
+LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 const App = () => {
   //Defines a new state that represeents the netwrok connectivity status
