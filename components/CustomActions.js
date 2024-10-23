@@ -5,7 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 
 import * as Location from 'expo-location';
-import { ref } from 'firebase/storage';
+import { ref, uploadBytes } from 'firebase/storage';
 
 const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
     const actionSheet = useActionSheet();
@@ -75,8 +75,6 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
       } else Alert.alert("Error occurred while fetching location");
     } else Alert.alert("Permissions haven't been granted.");
   }
-
-  const newUploadRef = ref(storage, 'image123');
 
   return (
     <TouchableOpacity 
