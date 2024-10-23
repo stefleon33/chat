@@ -117,18 +117,18 @@ const Chat = ({ route, navigation, db, isConnected }) => {
       styles.container,
       { backgroundColor: backgroundColor}
     ]}>
-    <GiftedChat
-      messages={messages}
-      renderBubble={renderBubble}
-      renderInputToolbar={renderInputToolbar}
-      onSend={messages => onSend(messages)}
-      renderActions={renderCustomActions}
-      renderCustomView={renderCustomView}
-      user={{
-        _id: userID,
-        name: name,
-      }}
-    />
+      <GiftedChat
+        messages={messages}
+        renderBubble={renderBubble}
+        renderInputToolbar={renderInputToolbar}
+        onSend={messages => onSend(messages)}
+        renderActions={renderCustomActions}
+        renderCustomView={renderCustomView}
+        user={{
+          _id: userID,
+          name: name,
+        }}
+      />
 
     { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null }
     { Platform.OS === "ios"?<KeyboardAvoidingView behavior="padding" />: null }
