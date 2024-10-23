@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomActions from './CustomActions';
 import MapView from 'react-native-maps';
 
+
 const Chat = ({ route, navigation, db, isConnected }) => {
   const { userID, name, backgroundColor } = route.params;
   const [messages, setMessages] = useState([]);
@@ -85,7 +86,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
   }
 
   const renderCustomActions = (props) => {
-    return <CustomActions onSend={onSend} {...props} />;
+    return <CustomActions storage={storage} onSend={onSend} {...props} />;
   };
 
   /* Checks if the current message contains location data */
