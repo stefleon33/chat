@@ -7,7 +7,7 @@ import * as MediaLibrary from 'expo-media-library';
 import * as Location from 'expo-location';
 import { ref } from 'firebase/storage';
 
-const CustomActions = ({ wrapperStyle, iconTextStyle, onSend }) => {
+const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
     const actionSheet = useActionSheet();
 
     const onActionPress = () => {
