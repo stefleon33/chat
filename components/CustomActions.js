@@ -36,7 +36,7 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
         );
     };
 
-    // Function to generate a unique reference for an image based on user ID, current timestamp, and image name
+  // Function to generate a unique reference for an image based on user ID, current timestamp, and image name
   const generateReference = (uri) => {
     const timeStamp = new Date().getTime();
     const imageName = uri.split("/")[uri.split("/").length - 1];
