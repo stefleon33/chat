@@ -42,7 +42,7 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
     const imageName = uri.split("/")[uri.split("/").length - 1];
     return `${userID}-${timeStamp}-${imageName}`;
   };
-  
+
   // Function to upload an image to Firebase Storage and send its URL
   const uploadAndSendImage = async (imageURI) => {
     const uniqueRefString = generateReference(imageURI);
@@ -91,7 +91,11 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
   };
 
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
+        accessible={true}
+        accessibilityLabel="Input field option"
+        accessibilityHint="Lets you select to pick an image, take a photo, or send a location."
+        accessibilityRole="button"   
         style={styles.container} 
         onPress={onActionPress}>
             <View style={[styles.wrapper, wrapperStyle]}>
