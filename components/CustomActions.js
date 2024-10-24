@@ -8,7 +8,12 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
     const actionSheet = useActionSheet();
 
     const onActionPress = () => {
-        const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];
+        const options = [
+            'Choose From Library', 
+            'Take Picture', 
+            'Send Location', 
+            'Cancel'
+        ];
         const cancelButtonIndex = options.length - 1;
         actionSheet.showActionSheetWithOptions(
             {
@@ -49,7 +54,7 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
       if (!result.canceled) await uploadAndSendImage(result.assets[0].uri);
       else Alert.alert("Permissions haven't been granted.");
     }
-  }
+  };
 
   const takePhoto = async () => {
     let permissions = await ImagePicker.requestCameraPermissionsAsync();
@@ -58,7 +63,8 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
       if (!result.canceled) await uploadAndSendImage(result.assets[0].uri);
       else Alert.alert("Permissions haven't been granted.");
     }
-  }
+  };
+
   const getLocation = async () => {
     let permissions = await Location.requestForegroundPermissionsAsync();
     if (permissions?.granted) {
@@ -69,16 +75,10 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
             longitude: location.coords.longitude,
             latitude: location.coords.latitude,
           },
-        });
+        ]);
       } else Alert.alert("Error occurred while fetching location");
     } else Alert.alert("Permissions haven't been granted.");
-  }
-
-const generateReference = (uri) => {
-    const timeStamp = (new Date()).getTime();
-    const imageName = uri.split("/")[uri.split("/").length - 1];
-    return `${userID}-${timeStamp}-${imageName}`;
-  }
+  };
 
   return (
     <TouchableOpacity 
