@@ -36,12 +36,6 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
         );
     };
 
-    const generateReference = (uri) => {
-        const timeStamp = (new Date()).getTime();
-        const imageName = uri.split("/")[uri.split("/").length - 1];
-        return `${userID}-${timeStamp}-${imageName}`;
-    }
-    
     const uploadAndSendImage = async (imageURI) => {
         // Upload loginc used in pickImage and takePhoto
         const uniqueRefString = generateReference(imageURI);
@@ -62,6 +56,12 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
         ]);
         });
     };
+    // Function to generate a unique reference for an image based on user ID, current timestamp, and image name
+  const generateReference = (uri) => {
+    const timeStamp = new Date().getTime();
+    const imageName = uri.split("/")[uri.split("/").length - 1];
+    return `${userID}-${timeStamp}-${imageName}`;
+  };
 
   const pickImage = async () => {
     let permissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
