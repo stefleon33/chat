@@ -4,7 +4,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 
-const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID, name }) => {
+const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID }) => {
     const actionSheet = useActionSheet();
 
     const onActionPress = () => {
