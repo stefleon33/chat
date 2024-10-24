@@ -86,7 +86,17 @@ const Chat = ({ route, navigation, db, isConnected, storage }) => {
   }
 
   const renderCustomActions = (props) => {
-    return <CustomActions storage={storage} onSend={onSend} {...props} />;
+    return <CustomActions userID={userID} storage={storage} onSend={(newMessages => {
+      onSend([{
+        ...newMessages,
+        _id: uuidv4(),
+        createdAt: new Date (),
+        user: {
+          _id: userID,
+          name: name
+        }
+    }])
+    })} {...props}/>;
   };
 
   /* Checks if the current message contains location data */
