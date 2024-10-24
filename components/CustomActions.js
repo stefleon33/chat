@@ -36,16 +36,32 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID, n
         );
     };
 
-  const uploadAndSendImage = async (imageURI) => {
-    const uniqueRefString = generateReference(imageURI);
-    const newUploadRef = ref(storage, uniqueRefString);
-    const response = await fetch(imageURI);
-    const blob = await response.blob();
-    uploadBytes(newUploadRef, blob).then(async (snapshot) => {
-      const imageURL = await getDownloadURL(snapshot.ref)
-      onSend({ image: imageURL })
-    });
-  }
+    const generateReference = (uri) => {
+        const timeStamp = (new Date()).getTime();
+        const imageName = uri.split("/")[uri.split("/").length - 1];
+        return `${userID}-${timeStamp}-${imageName}`;
+    }
+    
+    const uploadAndSendImage = async (imageURI) => {
+        // Upload loginc used in pickImage and takePhoto
+        const uniqueRefString = generateReference(imageURI);
+        const newUploadRef = ref(storage, uniqueRefString);
+        const response = await fetch(imageURI);
+        const blob = await response.blob();
+        uploadBytes(newUploadRef, blob).then(async (snapshot) => {
+        const imageURL = await getDownloadURL(snapshot.ref);
+        onSend([
+            {
+            image: imageURL,
+            createdAt: new Date(),
+            user: {
+                _id: userID,
+                name: name,
+            },
+            },
+        ]);
+        });
+    };
 
   const pickImage = async () => {
     let permissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
