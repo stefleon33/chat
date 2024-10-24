@@ -36,31 +36,24 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
         );
     };
 
-    const uploadAndSendImage = async (imageURI) => {
-        // Upload loginc used in pickImage and takePhoto
-        const uniqueRefString = generateReference(imageURI);
-        const newUploadRef = ref(storage, uniqueRefString);
-        const response = await fetch(imageURI);
-        const blob = await response.blob();
-        uploadBytes(newUploadRef, blob).then(async (snapshot) => {
-        const imageURL = await getDownloadURL(snapshot.ref);
-        onSend([
-            {
-            image: imageURL,
-            createdAt: new Date(),
-            user: {
-                _id: userID,
-                name: name,
-            },
-            },
-        ]);
-        });
-    };
     // Function to generate a unique reference for an image based on user ID, current timestamp, and image name
   const generateReference = (uri) => {
     const timeStamp = new Date().getTime();
     const imageName = uri.split("/")[uri.split("/").length - 1];
     return `${userID}-${timeStamp}-${imageName}`;
+  };
+  
+  // Function to upload an image to Firebase Storage and send its URL
+  const uploadAndSendImage = async (imageURI) => {
+    const uniqueRefString = generateReference(imageURI);
+    const newUploadRef = ref(storage, uniqueRefString);
+    const response = await fetch(imageURI);
+    // Convert the image data into a Blob
+    const blob = await response.blob();
+    uploadBytes(newUploadRef, blob).then(async (snapshot) => {
+      const imageURL = await getDownloadURL(snapshot.ref);
+      onSend({ image: imageURL });
+    });
   };
 
   const pickImage = async () => {
